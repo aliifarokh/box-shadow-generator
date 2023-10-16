@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>box-shadow-gen</title>
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+
+<body>
+    <main class="w-full 2xl:container mx-auto min-h-[100vh] font-ali">
+        <section class="w-full flex flex-wrap">
+            <div class="w-full lg:w-1/2 border border-r-black flex flex-wrap content-between p-12 bg-[#dfdfdf]">
+                <h1 class="font-[ali] w-full text-4xl font-bold">CSS Box Shadow Generator</h1>
+                <div class="w-[90%] flex flex-wrap  border-black justify-between">
+                    <div class="flex flex-wrap justify-between content-between w-[45%] my-4 border-red-600">
+                        <h3 class="w-full my-2">Shadow Color</h3>
+                        <input id="sc" class="flex w-[35%] my-2  border-black" value="#000000" type="color">
+                        <input class="flex w-[55%] my-2 border border-black ps-2" value="#000000" readonly disabled
+                            type="text">
+                    </div>
+                    <div class="flex flex-wrap justify-between content-between w-[45%] my-4 border-red-600">
+                        <h3 class="w-full my-2">Background Color</h3>
+                        <input id="bg" class="flex w-[35%] my-2  border-black" value="#ffffff" type="color">
+                        <input class="flex w-[55%] my-2 border border-black ps-2" value="#ffffff" readonly disabled
+                            type="text">
+                    </div>
+                    <div class="flex flex-wrap justify-between content-between w-[45%] my-4 border-red-600">
+                        <h3 class="w-full my-2">Button Color</h3>
+                        <input id="bc" class="flex w-[35%] my-2  border-black" value="#000000" type="color">
+                        <input class="flex w-[55%] my-2 border border-black ps-2" value="#000000" readonly disabled
+                            type="text">
+                    </div>
+                    <div class="flex flex-wrap justify-between content-between w-[45%] my-4  border-red-600">
+                        <h3 class="w-full my-2">Text Color</h3>
+                        <input id="tc" class="flex w-[35%] my-2  border-black" value="#ffffff" type="color">
+                        <input class="flex w-[55%] my-2 border border-black ps-2" value="#ffffff" readonly disabled
+                            type="text">
+                    </div>
+                </div>
+                <div class="w-full flex flex-wrap  border-black ">
+                    <div class="w-full flex flex-wrap justify-between  border-black py-10">
+                        <h3 class="text-xl ">Horizontal Length</h3>
+                        <div class="w-[25%] flex ">
+                            <input class="flex w-2/3 border border-black ps-2" readonly disabled type="text">
+                            <span class="flex justify-center text-xl items-center w-1/3">px</span>
+                        </div>
+                        <input class="w-full my-4" type="range" name="" id="hrl">
+                    </div>
+                    <div class="w-full flex flex-wrap justify-between  border-black py-10">
+                        <h3 class="text-xl ">Vertical Length</h3>
+                        <div class="w-[25%] flex ">
+                            <input class="flex w-2/3 border border-black ps-2" ireadonly disabled type="text">
+                            <span class="flex justify-center text-xl items-center w-1/3">px</span>
+                        </div>
+                        <input class="w-full my-4" type="range" name="" id="vrl">
+                    </div>
+                    <div class="w-full flex flex-wrap justify-between  border-black py-10">
+                        <h3 class="text-xl ">Blur Radius</h3>
+                        <div class="w-[25%] flex ">
+                            <input class="flex w-2/3 border border-black ps-2" readonly disabled type="text">
+                            <span class="flex justify-center text-xl items-center w-1/3">px</span>
+                        </div>
+                        <input class="w-full my-4" type="range" name="" id="blr">
+                    </div>
+                    <div class="w-full flex flex-wrap justify-between  border-black py-10">
+                        <h3 class="text-xl ">Spread Radius</h3>
+                        <div class="w-[25%] flex ">
+                            <input class="flex w-2/3 border border-black ps-2" readonly disabled type="text">
+                            <span class="flex justify-center text-xl items-center w-1/3">px</span>
+                        </div>
+                        <input class="w-full my-4" type="range" name="" id="spr">
+                    </div>
+                    <div class="w-full flex flex-wrap justify-between  border-black py-10">
+                        <h3 class="text-xl ">Opacity</h3>
+                        <div class="w-[25%] flex ">
+                            <input class="flex w-2/3 border border-black ps-2" readonly disabled type="text">
+                        </div>
+                        <input class="w-full my-4" type="range" name="" id="op">
+                    </div>
+                </div>
+                <div class="w-full py-10 flex  border-black items-center">
+                    <span class="text-2xl me-4">Inset </span>
+                    <input id="inset" class="w-[20px] h-[20px]" type="checkbox">
+                </div>
+            </div>
+            <div id="back" class="w-full lg:w-1/2 flex min-h-[100vh] justify-center items-center">
+                <button id="btn"
+                    class="flex w-[210px] h-[60px] justify-center items-center text-2xl text-white bg-[red] rounded-[15px]">Button</button>
+            </div>
+            <div class="w-full flex justify-center items-center py-7 bg-[#dfdfdf]">
+                <button id="click" class="w-[100px] h-[40px] flex rounded-[10px] bg-green-700 justify-center items-center text-white">Copy</button>
+                <h1 id="result" class="text-2xl  border-black rounded-[10px] h-[90px] w-[80%] p-3 flex justify-center items-center"></h1>
+            </div>
+        </section>
+    </main>
+</body>
+<script>
+
+
+    let back = document.getElementById('back')
+    let btn = document.getElementById('btn')
+
+    let bg = document.getElementById('bg')
+    let bc = document.getElementById('bc')
+    let tc = document.getElementById('tc')
+    let sc = document.getElementById('sc')
+
+
+
+    let hrl = document.getElementById('hrl')
+    let vrl = document.getElementById('vrl')
+    let blr = document.getElementById('blr')
+    let spr = document.getElementById('spr')
+    let op = document.getElementById('op')
+
+    let shadowColor = ''
+    let hrlval = 0
+    let vrlval = 0
+    let blrval = 0
+    let sprval = 0
+    let opval = 0.5
+    let colorSc = ''
+    let inset = ''
+    hrl.previousElementSibling.children[0].value = hrlval
+    vrl.previousElementSibling.children[0].value = vrlval
+    blr.previousElementSibling.children[0].value = blrval
+    spr.previousElementSibling.children[0].value = sprval
+    op.previousElementSibling.children[0].value = opval
+
+
+    blr.value = 10
+    spr.value = 10
+    colorSc = sc.value
+    shadowColor = convertRgba(colorSc, opval)
+
+    finalBox()
+
+    bg.addEventListener('input', (e) => {
+        // console.log(e.target.value.red());
+        opval = 1
+        let color = e.target.value
+        e.target.nextElementSibling.value = color
+        back.style.backgroundColor = convertRgba(color, opval)
+    })
+    bc.addEventListener('input', (e) => {
+        // console.log(e.target.value.red());
+        opval = 1
+        let color = e.target.value
+        e.target.nextElementSibling.value = color
+        btn.style.backgroundColor = convertRgba(color, opval)
+    })
+    tc.addEventListener('input', (e) => {
+        opval = 1
+        let color = e.target.value
+        e.target.nextElementSibling.value = color
+        btn.style.color = convertRgba(color, opval)
+    })
+
+
+    sc.addEventListener('input', (e) => {
+        colorSc = e.target.value
+        shadowColor = convertRgba(colorSc, opval)
+        e.target.nextElementSibling.value = colorSc
+        // console.log(hrlval + '  ' + vrlval + '  ' + blrval + '  ' + sprval + '  ' + shadowColor);
+
+    })
+
+
+    hrl.addEventListener('input', (e) => {
+        hrlval = (e.target.value) - 50
+        finalBox()
+        e.target.previousElementSibling.children[0].value = hrlval
+    })
+    vrl.addEventListener('input', (e) => {
+        vrlval = (e.target.value) - 50
+        finalBox()
+        e.target.previousElementSibling.children[0].value = vrlval
+    })
+    blr.addEventListener('input', (e) => {
+        blrval = (e.target.value)
+        finalBox()
+        e.target.previousElementSibling.children[0].value = blrval
+    })
+    spr.addEventListener('input', (e) => {
+        sprval = (e.target.value) - 50
+        finalBox()
+        e.target.previousElementSibling.children[0].value = sprval
+    })
+    op.addEventListener('input', (e) => {
+        opval = (e.target.value) / 100
+        shadowColor = convertRgba(colorSc, opval)
+        finalBox()
+        e.target.previousElementSibling.children[0].value = opval
+    })
+
+    function convertRgba(color, opaval) {
+
+        let r = parseInt(color.substr(1, 2), 16)
+        let g = parseInt(color.substr(3, 2), 16)
+        let b = parseInt(color.substr(5, 2), 16)
+        let a = opval
+        // console.log(`red: ${r}, green: ${g}, blue: ${b}`)
+
+        return ` rgba( ${r} , ${g} , ${b} , ${a}) `
+
+    }
+    function finalBox(){
+
+        let result = `${hrlval}px ${vrlval}px ${blrval}px ${sprval}px ${shadowColor} ${inset}`
+        btn.style.boxShadow = result
+        document.getElementById('result').innerHTML = 'box-shadow: '+ result +';'
+    }
+
+
+    document.getElementById('click').addEventListener('click',(e)=>{
+        navigator.clipboard.writeText(e.target.nextElementSibling.textContent)
+        alert('Text Copied!')
+    })
+    document.getElementById('inset').addEventListener('change' , (e)=>{
+        if(e.target.checked){
+            inset = 'inset'
+        }else{
+            inset = ''
+        }
+        finalBox()
+    })
+</script>
+
+</html>

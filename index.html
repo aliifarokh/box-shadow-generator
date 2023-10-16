@@ -133,9 +133,11 @@
 
     blr.value = 10
     spr.value = 10
+    bc.value = '#ff0000'
     colorSc = sc.value
     shadowColor = convertRgba(colorSc, opval)
-
+    btn.style.color = tc.value
+    btn.style.backgroundColor = bc.value
     finalBox()
 
     bg.addEventListener('input', (e) => {
